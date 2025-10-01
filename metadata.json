@@ -1,0 +1,7 @@
+{
+  "name": "Calendario AI Smart",
+  "description": "Un'applicazione di calendario intelligente che ti consente di gestire i tuoi eventi tramite comandi di testo e vocali, alimentata dall'intelligenza artificiale. Pianifica, riepiloga e organizza la tua giornata senza sforzo.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
