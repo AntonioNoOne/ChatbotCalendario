@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { CalendarView } from './components/CalendarView';
+import  CalendarView  from './components/CalendarView';
 import { ChatPanel } from './components/ChatPanel';
 import { SettingsModal } from './components/SettingsModal';
 import { useCalendar } from './hooks/useCalendar';
