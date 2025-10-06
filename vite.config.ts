@@ -9,18 +9,31 @@ export default defineConfig(({ mode }) => {
         server: {
             port: 3000,
             host: '0.0.0.0',
-            // <‑‑ aggiungi qui l’host di Render (e localhost per lo sviluppo)
+            // <‑‑ aggiungi qui l'host di Render (e localhost per lo sviluppo)
             allowedHosts: ['chatbotcalendario.onrender.com', 'localhost'],
         },
         plugins: [react()],
         define: {
-            // Solo una copia è sufficiente
-            'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+            // Configurazione per le variabili d'ambiente
+            'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY),
         },
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, '.'),
             },
         },
+        build: {
+            outDir: 'dist',
+            sourcemap: false,
+            minify: 'terser',
+            rollupOptions: {
+                output: {
+                    manualChunks: {
+                        vendor: ['react', 'react-dom'],
+                        gemini: ['@google/genai']
+                    }
+                }
+            }
+        }
     };
 });
