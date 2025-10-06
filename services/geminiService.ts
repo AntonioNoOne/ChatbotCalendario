@@ -1,7 +1,16 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { CalendarEvent, AiAction } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY as string });
+// Debug: controlla se l'API key è disponibile
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+console.log('API Key disponibile:', !!apiKey);
+
+if (!apiKey) {
+    console.error('VITE_GEMINI_API_KEY non è configurata!');
+    throw new Error('API Key di Google Gemini non configurata. Imposta VITE_GEMINI_API_KEY nelle variabili d\'ambiente.');
+}
+
+const ai = new GoogleGenAI({ apiKey });
 
 const model = 'gemini-2.5-flash';
 
